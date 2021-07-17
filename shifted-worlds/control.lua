@@ -67,6 +67,7 @@ local function teleport_players()
 			non_colliding_position = next_surface.find_non_colliding_position(player.character.name, player.position, 1000, 1) or next_surface.find_non_colliding_position(player.character.name, {0, 0}, 1000, 1)
 			-- if non_colliding_position == nil then return end -- oh, a bug, sorta
 		end
+		player.print({"shifted-worlds.player-was-teleported"})
 		player.teleport(non_colliding_position or player.position, next_surface)
 	end
 end
