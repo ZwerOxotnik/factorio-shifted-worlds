@@ -1,0 +1,8 @@
+﻿---------------------------------------------------------------------------------------------------
+Version: 0.4.0
+Date: 2021-07-17
+  Features:
+    - Added a reminder about the time until the next teleportation.
+  Changes:
+    - More accurate time tracking
+    - Default teleportation: each 45 minutes
