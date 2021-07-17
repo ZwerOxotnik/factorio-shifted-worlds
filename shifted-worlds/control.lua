@@ -114,7 +114,7 @@ local function check_teleportation(event)
 
 	local ticks_till_teleportation = shifted_worlds.next_teleportation_tick - event.tick
 	if ticks_till_teleportation > 0 then
-		local minutes = ceil(ticks_till_teleportation) / (3600 * game.speed)
+		local minutes = ceil(ticks_till_teleportation / (3600 * game.speed))
 		if minutes < 5 or minutes % 10 == 0 then
 			game.print({"shifted-worlds.reminder", minutes})
 		end
