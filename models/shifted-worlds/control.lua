@@ -97,20 +97,32 @@ local function teleport_players()
 	end
 
 	for _, player in pairs(game.connected_players) do
-		local non_colliding_position
-		local position = player.position
-		if player.character then
-			non_colliding_position = next_surface.find_non_colliding_position(player.character.name, position, 1000, 1) or next_surface.find_non_colliding_position(player.character.name, {0, 0}, 1000, 1)
+		local character = player.character
+		if player.surface ~= next_surface and character then
+			local non_colliding_position
+			local target
+			local position = player.position
+			local vehicle = player.vehicle
+			if vehicle and not vehicle.train then
+				target = vehicle
+				local target_name = vehicle.name
+				non_colliding_position = next_surface.find_non_colliding_position(target_name, position, 1000, 1) or next_surface.find_non_colliding_position(target_name, {0, 0}, 1000, 1)
+			else
+				target = player
+				local target_name = character.name
+				non_colliding_position = next_surface.find_non_colliding_position(target_name, position, 1000, 1) or next_surface.find_non_colliding_position(target_name, {0, 0}, 1000, 1)
+			end
+
 			-- if non_colliding_position == nil then return end -- oh, a bug, sorta
-		end
-		player.print({"shifted-worlds.player-were-teleported"})
-		player.teleport(non_colliding_position or position, next_surface)
-		local surface = player.surface
-		if scan_radius > 0 then
-			scan_around(player, surface, position.x, position.y)
-		end
-		if clear_radius > 0 then
-			remove_enemies(surface, position)
+			player.print({"shifted-worlds.player-were-teleported"})
+			target.teleport(non_colliding_position or position, next_surface)
+			local surface = target.surface
+			if scan_radius > 0 then
+				scan_around(player, surface, position.x, position.y)
+			end
+			if clear_radius > 0 then
+				remove_enemies(surface, position)
+			end
 		end
 	end
 
