@@ -1,8 +1,20 @@
 ﻿---------------------------------------------------------------------------------------------------
+Version: 0.5.0
+Date: 2021-07-18
+  Features:
+    - New map settings: teleport after death, auto-save, scan radius, clear radius
+    - New commands: /teleport /update-teleport-timer
+  Bugfixes:
+    - Fixed teleport time if game speed was changed at start (it doesn't work after start in some cases but you can use /update-teleport-timer)
+    - Works with old saves properly
+    - Reminder works better
+  Notes:
+    - Refactored
+---------------------------------------------------------------------------------------------------
 Version: 0.4.2
 Date: 2021-07-17
   Changes:
-    - Players receive messages about successful teleportation
+    - Players receive message about successful teleportation
 ---------------------------------------------------------------------------------------------------
 Version: 0.4.1
 Date: 2021-07-17

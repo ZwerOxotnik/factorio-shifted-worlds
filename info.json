@@ -1,12 +1,12 @@
 {
     "name": "shifted-worlds",
-    "version": "0.4.2",
+    "version": "0.5.0",
     "factorio_version": "1.1",
     "title": "Shifted worlds",
     "author": "ZwerOxotnik",
     "contact": "zweroxotnik@gmail.com, Discord:ZwerOxotnik#7117",
     "source": "https://gitlab.com/ZwerOxotnik/shifted-worlds",
     "homepage": "https://www.reddit.com/r/ZwerOxotnik/",
-    "description": "Every N minutes, players will be teleported in another world(s) on the same position where they were from the previous world.\nKinda, a new challenge for you.",
+    "description": "",
     "dependencies": []
 }
