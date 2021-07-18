@@ -1,6 +1,11 @@
 
 if script.level.campaign_name then return end -- Don't init if it's a campaign
 if script.level.level_name == "sandbox" then return end -- Don't init if it's "sandbox" scenario
+if script.level.level_name == "pvp" then return end
+if script.level.level_name == "team-production" then return end
+if script.level.level_name == "rocket-rush" then return end
+if script.level.level_name == "wave-defence" then return end
+
 
 local event_handler = require("event_handler")
 
