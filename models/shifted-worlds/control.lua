@@ -61,16 +61,21 @@ end
 
 local function remove_enemies(surface, position)
 	-- It doesn't work for not charted chunks
-	for _, entity in pairs(surface.find_enemy_units(position, clear_radius)) do
-		entity.destroy()
+	local enemies = surface.find_enemy_units(position, clear_radius)
+	for i=1, #enemies do
+		enemies[i].destroy()
 	end
 end
 
 local function create_new_world()
-	local settings = game.surfaces[1].map_gen_settings
+	local settings = game.get_surface(1).map_gen_settings
 	settings.seed = math.random(0, 4294967295)
-	shifted_worlds.generated_world_count = shifted_worlds.generated_world_count + 1
-	local surface_name = "shifted_world_" .. shifted_worlds.generated_world_count
+	local generated_world_count = shifted_worlds.generated_world_count + 1
+	while game.get_surface("shifted_world_" .. generated_world_count) do
+		generated_world_count = generated_world_count + 1
+	end
+	shifted_worlds.generated_world_count = generated_world_count
+	local surface_name = "shifted_world_" .. generated_world_count
 	local new_surface = game.create_surface(surface_name, settings)
 	local worlds = shifted_worlds.worlds
 	worlds[#worlds+1] = new_surface.index
